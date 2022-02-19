@@ -9,13 +9,17 @@ package object primes {
     def isPrime(n: Int): Boolean
   }
 
-  class TextBookCalculator(override val name: String) extends Calculator {
+  class TextBookCalculator extends Calculator {
+    override val name: String = Calculator.TEXTBOOK
+
     def isPrime(n: Int): Boolean =
       n > 1 && ((2 until n) forall (d => n % d != 0L))
   }
 
   /** https://dev.to/guildenstern70/a-pure-functional-primality-test-in-scala-3gif */
-  class Guildenstern70Calculator(override val name: String) extends Calculator {
+  class Guildenstern70Calculator extends Calculator {
+    override val name: String = Calculator.GUILDENSTERN70
+
     def isPrime(n: Int): Boolean =
       isPrime(n, 5)
 
@@ -33,7 +37,9 @@ package object primes {
     }
   }
 
-  class RecursiveCalculator(override val name: String) extends Calculator {
+  class RecursiveCalculator extends Calculator {
+    override val name: String = Calculator.RECURSIVE
+
     def isPrime(n: Int): Boolean = {
       @tailrec
       def loop(n: Int, i: Int = 5): Boolean =
@@ -44,6 +50,7 @@ package object primes {
         else
           true
 
+      // noinspection DfaConstantConditions
       if (n <= 3) n > 1
       else if (n % 2 == 0 || n % 3 == 0) false
       else loop(n)
@@ -57,9 +64,9 @@ package object primes {
 
     def apply(name: String = RECURSIVE): Calculator =
       name.toLowerCase match {
-        case TEXTBOOK       => new TextBookCalculator(name.toLowerCase)
-        case GUILDENSTERN70 => new Guildenstern70Calculator(name.toLowerCase)
-        case RECURSIVE      => new RecursiveCalculator(name.toLowerCase)
+        case TEXTBOOK       => new TextBookCalculator
+        case GUILDENSTERN70 => new Guildenstern70Calculator
+        case RECURSIVE      => new RecursiveCalculator
         case unknown =>
           throw new IllegalArgumentException(s"Unsupported calculator: $unknown")
       }
