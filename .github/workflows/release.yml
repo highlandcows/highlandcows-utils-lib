@@ -17,5 +17,5 @@ jobs:
       - name: Publish package
         run: sbt -Dversion=$VERSION publish
         env:
-          VERSION: 0.1.0
+          VERSION: 0.1.1
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
