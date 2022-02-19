@@ -25,6 +25,7 @@ jobs:
       - name: Run tests
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: sbt test
       - name: Cache
         uses: actions/cache@v2.1.7
         with:
