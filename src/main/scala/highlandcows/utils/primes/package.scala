@@ -9,6 +9,7 @@ package object primes {
     def isPrime(n: Int): Boolean
   }
 
+  /** Textbook definition of what it means to be a prime number */
   class TextBookCalculator extends Calculator {
     override val name: String = Calculator.TEXTBOOK
 
@@ -37,20 +38,20 @@ package object primes {
     }
   }
 
+  /** Recursive implementation of the Guildenstern70Calculator */
   class RecursiveCalculator extends Calculator {
     override val name: String = Calculator.RECURSIVE
 
     def isPrime(n: Int): Boolean = {
       @tailrec
       def loop(n: Int, i: Int = 5): Boolean =
-        if (i * i <= 5)
+        if (i * i <= n)
           if (n % i == 0 || n % (i + 2) == 0) false
           else
             loop(n, i + 6)
         else
           true
 
-      // noinspection DfaConstantConditions
       if (n <= 3) n > 1
       else if (n % 2 == 0 || n % 3 == 0) false
       else loop(n)
