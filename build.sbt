@@ -17,6 +17,9 @@ githubOwner       := "highlandcows"
 githubRepository  := "highlandcows-utils-lib"
 githubTokenSource := TokenSource.GitConfig("github.token") || TokenSource.Environment("GITHUB_TOKEN")
 
+publishMavenStyle         := true
+ThisBuild / versionScheme := Some("early-semver")
+
 lazy val root = (project in file("."))
   .settings(
     name    := "highlandcows-utils-lib",
