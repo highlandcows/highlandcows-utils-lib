@@ -10,7 +10,7 @@ package object primes {
   }
 
   /** Textbook definition of what it means to be a prime number */
-  class TextBookCalculator extends Calculator {
+  private class TextBookCalculator extends Calculator {
     override val name: String = Calculator.TEXTBOOK
 
     def isPrime(n: Int): Boolean =
@@ -18,7 +18,7 @@ package object primes {
   }
 
   /** https://dev.to/guildenstern70/a-pure-functional-primality-test-in-scala-3gif */
-  class Guildenstern70Calculator extends Calculator {
+  private class Guildenstern70Calculator extends Calculator {
     override val name: String = Calculator.GUILDENSTERN70
 
     def isPrime(n: Int): Boolean =
@@ -39,7 +39,7 @@ package object primes {
   }
 
   /** Recursive implementation of the Guildenstern70Calculator */
-  class RecursiveCalculator extends Calculator {
+  private class RecursiveCalculator extends Calculator {
     override val name: String = Calculator.RECURSIVE
 
     def isPrime(n: Int): Boolean = {
