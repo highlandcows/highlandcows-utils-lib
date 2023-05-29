@@ -1,5 +1,3 @@
-import Dependencies._
-
 ThisBuild / scalafixDependencies += "com.github.liancheng" %% "organize-imports" % "0.6.0"
 ThisBuild / scalaVersion                                   := "2.13.7"
 

@@ -13,7 +13,7 @@ package object primes {
   private class TextBookCalculator extends Calculator {
     override val name: String = Calculator.TEXTBOOK
 
-    def isPrime(n: Int): Boolean =
+    override def isPrime(n: Int): Boolean =
       n > 1 && ((2 until n) forall (d => n % d != 0L))
   }
 
@@ -21,7 +21,7 @@ package object primes {
   private class Guildenstern70Calculator extends Calculator {
     override val name: String = Calculator.GUILDENSTERN70
 
-    def isPrime(n: Int): Boolean =
+    override def isPrime(n: Int): Boolean =
       isPrime(n, 5)
 
     private def isPrime(n: Int, i: Int): Boolean = {
@@ -42,7 +42,7 @@ package object primes {
   private class RecursiveCalculator extends Calculator {
     override val name: String = Calculator.RECURSIVE
 
-    def isPrime(n: Int): Boolean = {
+    override def isPrime(n: Int): Boolean = {
       @tailrec
       def loop(n: Int, i: Int = 5): Boolean =
         if (i * i <= n)
